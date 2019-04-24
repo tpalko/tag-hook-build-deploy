@@ -29,12 +29,8 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 /*
-what do you wanna DO here?
 
-accept and respond to POST from git hook
 manage deployed containers on frank
 manage deployed containers elsewhere
-manage locally hosted libraries
-
 
 */

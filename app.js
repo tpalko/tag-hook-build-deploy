@@ -3,8 +3,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var users = require('./routes/users');
-var token = require('./routes/token');
 var hooks = require('./routes/hooks');
 var containers = require('./routes/containers');
 var deploy = require('./routes/deploy');
@@ -15,8 +13,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 
-app.use('/api/v1/users', users);
-app.use('/api/v1/token', token);
 app.use('/api/v1/hooks', hooks);
 app.use('/api/v1/containers', containers);
 app.use('/api/v1/deploy', deploy);

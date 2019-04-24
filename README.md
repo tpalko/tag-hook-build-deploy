@@ -20,11 +20,17 @@ github.com webhook configured to call Frank API on push.
 
 # Development
 
-- write deployment target runners
+1. develop configurable tag management to drive builds
+2. write deployment target runners
   - current is local development (no tag)
-  - need tag management / responsiveness
   - need remote deployment (heroku, aws)
   - need script packaging / placement
-- break off builder container
-- docker build from git repo URL
-- queue builds from webhook call
+3. break off builder container
+4. docker build from git repo URL
+  - currently requires API container have a volume bind containing a clone
+  - deploy model will swap out `local_path` for `repo_url`
+5. queue builds from webhook call
+  - expose API endpoint for queuing builds
+  - hook POST verifies and calls queue endpoint
+  - pub/sub worker pulls and runs
+  - manage concurrency/quiet period for a single deploy/target

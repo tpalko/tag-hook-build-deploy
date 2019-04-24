@@ -9,6 +9,8 @@ router.get('/', function(req, res, next) {
     },  err => { console.error(err); });
 });
 
+// -- local_path is the path to the cloned repo in the API container volume (see docker-compose.yml)
+
 router.post('/', function(req, res, next) {
   var deploy = {
     name: req.body['name'],
@@ -22,14 +24,3 @@ router.post('/', function(req, res, next) {
 })
 
 module.exports = router;
-
-/*
-what do you wanna DO here?
-
-accept and respond to POST from git hook
-manage deployed containers on frank
-manage deployed containers elsewhere
-manage locally hosted libraries
-
-
-*/
