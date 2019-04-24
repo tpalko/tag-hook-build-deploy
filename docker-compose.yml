@@ -1,0 +1,17 @@
+version: '3'
+services:
+  frank_api:
+    image: frank_api
+    build: .
+    container_name: frank_api
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /media/storage/development/projects:/opt/frank/projects
+      - /media/storage/development/github.com:/opt/frank/github.com
+    external_links:
+      - couchdb_frank
+    networks:
+      - frankenbridge
+networks:
+  frankenbridge:
+    external: true
