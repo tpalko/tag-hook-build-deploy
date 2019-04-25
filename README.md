@@ -34,3 +34,17 @@ github.com webhook configured to call Frank API on push.
   - hook POST verifies and calls queue endpoint
   - pub/sub worker pulls and runs
   - manage concurrency/quiet period for a single deploy/target
+
+# Appendix A: docker image
+
+RUN apt-get -y install apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common
+RUN curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
+  add-apt-repository \
+     "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+     $(lsb_release -cs) \
+     stable"
+RUN apt-get -y update && apt-get -y upgrade && apt-get -y install docker-ce
