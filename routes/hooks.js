@@ -10,6 +10,14 @@ const promisifyStream = stream => new Promise((resolve, reject) => {
   stream.on('error', reject)
 });
 
+/*
+Webhooks call in here to report repository state change.
+The commit information is scraped for the project name, which
+is then used to look up its build information relevant for
+the branch in question. TODO: We make a separate call back in through
+the front door to kick off the build.
+*/
+
 router.post('/', function(req, res, next) {
 
   console.log(req.headers['user-agent']);

@@ -9,6 +9,7 @@ const db = {
   databases: {
     hooks_db: { name: "github_hooks" },
     config_db: { name: "deployment_configurations", view: "_design/deploys/_view/deploy_by_name" }
+    // TODO: db for builds
   }
 }
 

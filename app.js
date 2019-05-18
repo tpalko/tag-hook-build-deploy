@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var hooks = require('./routes/hooks');
 var containers = require('./routes/containers');
 var deploy = require('./routes/deploy');
+var build = require('./routes/build');
 
 var app = express();
 
@@ -16,6 +17,7 @@ app.use(cookieParser())
 app.use('/api/v1/hooks', hooks);
 app.use('/api/v1/containers', containers);
 app.use('/api/v1/deploy', deploy);
+app.use('/api/v1/build', build);
 
 var db = require('./database');
 

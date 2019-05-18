@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../database');
 
+// -- Get deploy configurations
 router.get('/', function(req, res, next) {
   db.client.get(db.databases.config_db.name, db.databases.config_db.view, {})
     .then(({data, headers, status}) => {
@@ -9,11 +10,12 @@ router.get('/', function(req, res, next) {
     },  err => { console.error(err); });
 });
 
-// -- local_path is the path to the cloned repo in the API container volume (see docker-compose.yml)
 
+// -- Make a new deploy configuration
 router.post('/', function(req, res, next) {
   var deploy = {
     name: req.body['name'],
+    // -- local_path is the path to the cloned repo in the API container volume (see docker-compose.yml)
     local_path: req.body['local_path'],
     image_name: req.body['image_name']
   };
@@ -22,5 +24,7 @@ router.post('/', function(req, res, next) {
       res.json(data);
     }, err => { console.error(err); })
 })
+
+// TODO: kick off a new build (build.js?)
 
 module.exports = router;

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var docker = require('../docker');
 
+// -- get a list of all running containers 
 router.get('/', function(req, res, next) {
   docker.container.list()
    // Inspect
